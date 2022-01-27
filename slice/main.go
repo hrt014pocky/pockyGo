@@ -1,7 +1,7 @@
 /*
  * @Date: 2022-01-26 14:04:26
  * @LastEditors: Szang
- * @LastEditTime: 2022-01-26 14:52:51
+ * @LastEditTime: 2022-01-26 15:12:39
  * @FilePath: \hrt014pocky\slice\main.go
  */
 package main
@@ -47,5 +47,22 @@ func main() {
 	cafe := coffee
 	cafe[0] = "Cappuccino"
 	fmt.Println(coffee)
+	// 切片的扩容
+	fmt.Println("==========================append")
+	// 切片要初始化之后才能使用
+	var ap []int // 此时并没有申请内存
+	ap = append(ap, 10)
+	fmt.Println(ap)
+	ap[0] = 100
+	fmt.Println(ap)
+	for i := 0; i < 5; i++ {
+		ap = append(ap, i)
+		fmt.Printf("%v len:%d cap:%d ptr:%p\n", ap, len(ap), cap(ap), ap)
+	}
+	ap = append(ap, 1, 2, 3, 4, 5)
+	fmt.Println(ap)
+	ap1 := []int{11, 12, 13}
+	ap = append(ap, ap1...)
+	fmt.Println(ap)
 
 }
